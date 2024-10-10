@@ -1,56 +1,57 @@
 <template>
   <div>
-    <a-row justify="center" align="middle" style="height: 20vh;">
-      <a-col>
-        <a-space direction="vertical">
-          <a-input-search
-              v-model:value="value"
-              placeholder="input github user name"
-              enter-button
-              @search="onSearch"
-              size="large"
-              style="width: 500px;"
-          />
-        </a-space>
-      </a-col>
-    </a-row>
-  </div>
-  <div class="list-container">
-    <a-list item-layout="vertical" size="large" :data-source="listData" style="width: 80%">
-      <template #renderItem="{ item }">
-        <a-list-item key="item.title" >
-          <template v-if="!loading" #actions>
+    <div>
+      <a-row justify="center" align="middle" style="margin-top: 2%">
+        <a-col>
+          <a-space direction="vertical">
+            <a-input-search
+                v-model:value="value"
+                placeholder="input github user name"
+                enter-button
+                @search="onSearch"
+                size="large"
+                style="width: 500px;"
+            />
+          </a-space>
+        </a-col>
+      </a-row>
+    </div>
+    <div class="list-container">
+      <a-list item-layout="vertical" size="large" :data-source="listData" style="width: 80%">
+        <template #renderItem="{ item }">
+          <a-list-item key="item.title" >
+            <template v-if="!loading" #actions>
             <span v-for="({ icon, text }, index) in item.actions" :key="index">
               <component :is="icon" style="margin-right: 8px"></component>
               {{ text }}
             </span>
-          </template>
-          <template #extra>
-            <img
-                v-if="!loading"
-                width="272"
-                alt="logo"
-                src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png"
-            />
-          </template>
-          <a-skeleton :loading="loading" active avatar>
-            <a-list-item-meta :description="item.description">
-              <template #title>
-                <a :href="item.href">{{ item.title }}</a>
-              </template>
-              <template #avatar><a-avatar :src="item.avatar" /></template>
-            </a-list-item-meta>
-            {{ item.content }}
-          </a-skeleton>
-        </a-list-item>
-      </template>
-    </a-list>
-  </div>
-
-  <div>
-    <!-- "More" Button -->
-    <div style="text-align: center; margin-top: 20px;" v-if="listData.length > 0">
-      <a-button v-if="!loading" type="primary" @click="loadMore">Load More</a-button>
+            </template>
+            <template #extra>
+              <img
+                  v-if="!loading"
+                  width="272"
+                  alt="logo"
+                  src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png"
+              />
+            </template>
+            <a-skeleton :loading="loading" active avatar>
+              <a-list-item-meta :description="item.description">
+                <template #title>
+                  <a :href="item.href">{{ item.title }}</a>
+                </template>
+                <template #avatar><a-avatar :src="item.avatar" /></template>
+              </a-list-item-meta>
+              {{ item.content }}
+            </a-skeleton>
+          </a-list-item>
+        </template>
+      </a-list>
+    </div>
+    <div>
+      <!-- "More" Button -->
+      <div style="text-align: center; margin-top: 20px;" v-if="listData.length > 0">
+        <a-button v-if="!loading" type="primary" @click="loadMore">Load More</a-button>
+      </div>
     </div>
   </div>
 </template>
@@ -156,5 +157,6 @@ export default {
   justify-content: center; /* 水平居中 */
   align-items: center; /* 垂直居中 */
   min-height: 100vh; /* 让容器至少占满整个视窗高度 */
+  padding-top: 2%;
 }
 </style>
