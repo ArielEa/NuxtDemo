@@ -19,7 +19,7 @@
     <div class="list-container">
       <a-list item-layout="vertical" size="large" :data-source="listData" style="width: 80%">
         <template #renderItem="{ item }">
-          <a-list-item key="item.title" >
+          <a-list-item key="item.title" class="custom-list-item">
             <template v-if="!loading" #actions>
             <span v-for="({ icon, text }, index) in item.actions" :key="index">
               <component :is="icon" style="margin-right: 8px"></component>
@@ -29,13 +29,14 @@
             <template #extra>
               <img
                   v-if="!loading"
+                  class="list-item-extra"
                   width="272"
                   alt="logo"
                   src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png"
               />
             </template>
             <a-skeleton :loading="loading" active avatar>
-              <a-list-item-meta :description="item.description">
+              <a-list-item-meta :description="item.description" class="custom-meta">
                 <template #title>
                   <a :href="item.href">{{ item.title }}</a>
                 </template>
@@ -161,5 +162,17 @@ div {
   /*align-items: center; !* 垂直居中 *!*/
   min-height: 80vh; /* 让容器至少占满整个视窗高度 */
   margin-top: 50px;
+}
+.custom-list-item {
+  display: flex;
+  flex-direction: row-reverse; /* 将内容和图片互换位置 */
+}
+
+.custom-list-item .list-item-extra {
+  margin-right: 16px; /* 控制图片与内容的间距 */
+}
+
+.custom-meta {
+  flex: 1; /* 使内容部分充满剩余的空间 */
 }
 </style>
