@@ -10,7 +10,7 @@
                 enter-button
                 @search="onSearch"
                 size="large"
-                style="width: 500px;"
+                style="width: 500px; max-width: 500px;"
             />
           </a-space>
         </a-col>
@@ -49,7 +49,7 @@
     </div>
     <div>
       <!-- "More" Button -->
-      <div style="text-align: center; margin-top: 20px;" v-if="listData.length > 0">
+      <div style="text-align: center; margin-top: 10px;" v-if="listData.length > 0">
         <a-button v-if="!loading" type="primary" @click="loadMore">Load More</a-button>
       </div>
     </div>
@@ -152,11 +152,14 @@ export default {
 .skeleton-demo {
   border: 1px solid #f4f4f4;
 }
+div {
+  overflow: hidden; /* 或者 auto */
+}
 .list-container {
   display: flex;
   justify-content: center; /* 水平居中 */
-  align-items: center; /* 垂直居中 */
-  min-height: 100vh; /* 让容器至少占满整个视窗高度 */
-  padding-top: 2%;
+  /*align-items: center; !* 垂直居中 *!*/
+  min-height: 80vh; /* 让容器至少占满整个视窗高度 */
+  margin-top: 50px;
 }
 </style>
