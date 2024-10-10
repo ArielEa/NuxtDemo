@@ -1,6 +1,6 @@
 <template>
   <div>
-    <a-row justify="center" align="middle" style="height: 30vh;">
+    <a-row justify="center" align="middle" style="height: 20vh;">
       <a-col>
         <a-space direction="vertical">
           <a-input-search
@@ -46,7 +46,7 @@
       </template>
     </a-list>
   </div>
-  
+
   <div>
     <!-- "More" Button -->
     <div style="text-align: center; margin-top: 20px;" v-if="listData.length > 0">
